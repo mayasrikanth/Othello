@@ -18,6 +18,7 @@ public:
     bool testingMinimax;
     Side mine;
     Side yours;
+    Board *othello;
     //Side opponent;
 };
 
