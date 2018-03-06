@@ -24,6 +24,7 @@ Player::Player(Side side) {
  * Destructor for the player.
  */
 Player::~Player() {
+  // Delete dynamically allocated objects to clean up garbage
 }
 
 /*
