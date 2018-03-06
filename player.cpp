@@ -7,7 +7,7 @@
  */
 Player::Player(Side side) {
     // Will be set to true in test_minimax.cpp.
-    Board othello = new Board();  //creates board with 4 center pieces
+    othello = new Board();  //creates board with 4 center pieces
     mine = side;
     if (mine == BLACK)
     {
@@ -52,7 +52,7 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
      * TODO: Implement how moves your AI should play here. You should first
      * process the opponent's opponents move before calculating your own move
      */
-     othello.doMove(opponentsMove, yours);
+     othello->doMove(opponentsMove, yours);
      Move *move = new Move(0, 0);
      for (int i = 0; i < 8; i ++)
      {
@@ -60,9 +60,9 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
        {
          move ->setX(i);
          move ->setY(j);
-         if (othello.checkMove(move, mine))
+         if (othello->checkMove(move, mine))
          {
-           othello.doMove(move, mine);
+           othello->doMove(move, mine);
            return move;
          }
        }
