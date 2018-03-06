@@ -53,8 +53,14 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
      * process the opponent's opponents move before calculating your own move
      */
 
+<<<<<<< HEAD
     othello->doMove(opponentsMove, yours);
      Move *move = new Move(0, 0);
+=======
+     othello->doMove(opponentsMove, yours);
+     Move *move = new Move(0, 0);
+     Move *maxMove = nullptr;
+>>>>>>> e423e1ec28124407d7b11b7319d590814875b520
      for (int i = 0; i < 8; i ++)
      {
        for (int j = 0; j < 8; j ++)
@@ -63,6 +69,7 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
          move ->setY(j);
          if (othello->checkMove(move, mine))
          {
+<<<<<<< HEAD
            othello->doMove(move, mine);
            //return move;
          }
@@ -71,6 +78,19 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
 
 
      /* othello->doMove(opponentsMove, yours);
+=======
+           if (maxMove == nullptr ||
+             othello->checkScore(move) > othello->checkScore(maxMove))
+           {
+             maxMove = move;
+           };
+         }
+       }
+     return maxMove;
+     /*
+     * Random Heuristic
+     othello->doMove(opponentsMove, yours);
+>>>>>>> e423e1ec28124407d7b11b7319d590814875b520
      Move *move = new Move(0, 0);
      for (int i = 0; i < 8; i ++)
      {
@@ -84,9 +104,10 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
            return move;
          }
        }
+       */
+
      }
      */
     //refer to minimax tree to determine the most favorable move
-    return nullptr;
 }
 
