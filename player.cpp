@@ -7,7 +7,11 @@
  */
 Player::Player(Side side) {
     // Will be set to true in test_minimax.cpp.
+    Board othello = new Board();  //creates board with 4 center pieces 
+    mine = side;
+
     testingMinimax = false;
+
 
     /*
      * TODO: Do any initialization you need to do here (setting up the board,
