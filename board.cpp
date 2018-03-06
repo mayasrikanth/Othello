@@ -173,13 +173,13 @@ int Board::checkScore(Move *move){
             score = 5;  //all corner cases
 
         }
-        else  if( y == 0 && x == 1 || y == 0 && x == 6)
+        else  if( (y == 0 && x == 1) || (y == 0 && x == 6))
         {
-            score = 3;
+            score = 2;
         }
-        else if (y == 7 && x == 1 || y == 7 && x == 6)
+        else if ((y == 7 && x == 1) || (y == 7 && x == 6))
         {
-            score = 3;
+            score = 2;
         }
 
     }
@@ -187,7 +187,7 @@ int Board::checkScore(Move *move){
     {
         if(x == 0 || x == 7)
         {
-            score = 3;
+            score = 2;
 
         }
 
@@ -196,12 +196,12 @@ int Board::checkScore(Move *move){
     {
         if(x == 0 || x == 7)
         {
-            score = 3;
+            score = 2;
         }
     }
     else if ((x == 1 && (y == 1 || y == 6)) || (x == 6 && (y == 1 || y == 6)))
     {
-      score = 2;
+      score = 1;
     }
     else if (x == 0 || x == 7 || y == 0 || y == 7)
     {
