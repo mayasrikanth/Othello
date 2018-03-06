@@ -16,8 +16,9 @@ public:
 
     // Flag to tell if the player is running within the test_minimax context
     bool testingMinimax;
-    Side mine; 
-    //Side opponent; 
+    Side mine;
+    Side yours;
+    //Side opponent;
 };
 
 #endif

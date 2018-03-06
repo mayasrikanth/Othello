@@ -7,9 +7,16 @@
  */
 Player::Player(Side side) {
     // Will be set to true in test_minimax.cpp.
-    Board othello = new Board();  //creates board with 4 center pieces 
+    Board othello = new Board();  //creates board with 4 center pieces
     mine = side;
-
+    if (mine == BLACK)
+    {
+      yours = WHITE;
+    }
+    else
+    {
+      yours = BLACK;
+    }
     testingMinimax = false;
 
 
@@ -45,6 +52,21 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
      * TODO: Implement how moves your AI should play here. You should first
      * process the opponent's opponents move before calculating your own move
      */
-    //refer to minimax tree to determine the most favorable move 
+     othello.doMove(opponentsMove, yours);
+     Move *move = new Move(0, 0);
+     for (int i = 0; i < 8; i ++)
+     {
+       for (int j = 0; j < 8; j ++)
+       {
+         move ->setX(i);
+         move ->setY(j);
+         if (othello.checkMove(move, mine))
+         {
+           othello.doMove(move, mine);
+           return move;
+         }
+       }
+     }
+    //refer to minimax tree to determine the most favorable move
     return nullptr;
 }
