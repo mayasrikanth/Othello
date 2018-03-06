@@ -162,6 +162,49 @@ int Board::countWhite() {
     return taken.count() - black.count();
 }
 
+int Board::checkScore(Move *move){
+    int score = 0;
+    int x = move->getX();
+    int y = move->getY();
+    if(y == 0 || y == 7)
+    {
+        if(x ==0 || x == 7)
+        {
+            score = 5;  //all corner cases 
+
+        }
+        else  if( y == 0 && x == 1 || y == 0 && x == 6)
+        {
+            score = 3;
+        }
+        else if (y == 7 && x == 1 || y == 7 && x == 6)
+        {
+            score = 3;
+        }
+
+    }
+    else if(y == 6)
+    {
+        if(x == 0 || x == 7)
+        {
+            score = 3;
+
+        }
+
+    }
+    else if (y== 1)
+    {
+        if(x == 0 || x == 7)
+        {
+            score = 3;
+        }
+    }
+
+    
+
+
+}
+
 /*
  * Sets the board state given an 8x8 char array where 'w' indicates a white
  * piece and 'b' indicates a black piece. Mainly for testing purposes.
