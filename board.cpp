@@ -211,6 +211,7 @@ int Board::checkScore(Move *move){
     {
       score = 3;
     }
+    return score;
 }
 
 /*
