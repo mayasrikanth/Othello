@@ -170,7 +170,7 @@ int Board::checkScore(Move *move){
     {
         if(x ==0 || x == 7)
         {
-            score = 5;  //all corner cases 
+            score = 5;  //all corner cases
 
         }
         else  if( y == 0 && x == 1 || y == 0 && x == 6)
@@ -199,10 +199,18 @@ int Board::checkScore(Move *move){
             score = 3;
         }
     }
-
-    
-
-
+    else if ((x == 1 && (y == 1 || y == 6)) || (x == 6 && (y == 1 || y == 6)))
+    {
+      score = 2;
+    }
+    else if (x == 0 || x == 7 || y == 0 || y == 7)
+    {
+      score = 4;
+    }
+    else
+    {
+      score = 3;
+    }
 }
 
 /*
