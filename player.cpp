@@ -49,38 +49,40 @@ Player::~Player() {
  * return nullptr.
  */
 
-Move *Player::MiniMax(Move *opponentsMove, int msLeft) 
+Move *Player::MiniMax(Move *opponentsMove, int msLeft)
 {
-    int layer = max_depth; 
-    
-
-    
-
+    int layer = max_depth;
+    return MiniMaxOneLayer(opponentMove, layer);
 }
 
 
 Move *Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side) {
 
- // collect vector from getMoves in pointer and delete the pointer each time 
+ // collect vector from getMoves in pointer and delete the pointer each time
 
-  if(othello->hasMoves())
+  if (layer == 0)
   {
-        if (layer == 0)
-    {
-
-        return SimplePlayer(opponentsMove, msLeft);   //returns the best move 
-    }
+    return SimplePlayer(opponentsMove, msLeft);   //returns the best move
   }
 
   else
   {
-    
-    best = -1000;
-    
+    int best = -1000;
+    Move* best_move = nullptr;
+    vector <Move*> *all_moves = othello->getMoves(opponentMove, yours);
+    for (int i = 0; i < all_moves.size(); i++)
+    {
+      Move* current_move = MiniMaxOneLayer((all_moves[i], layer-1, yours);
+      int current_score = othello->checkScore(current_move);
+      if (current_score > best)
+      {
+        best = current_score;
+        best_move = current_move;
+      }
+    }
+    return current_move;
   }
-
-
-  }
+}
 
 
 
@@ -130,20 +132,9 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
      * TODO: Implement how moves your AI should play here. You should first
      * process the opponent's opponents move before calculating your own move
      */
-    
-     // return MiniMax(opponentsMove, msLeft);
+
+     return MiniMax(opponentsMove, msLeft);
      // return SimplePlayer(opponentsMove, msLeft);
      // return RandomHeuristic(opponentsMove, msLeft);
 
 }
-
-
-
-
-
-
-    
-
-
-
-
