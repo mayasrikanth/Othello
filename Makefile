@@ -1,11 +1,11 @@
 CC          = g++
 CFLAGS      = -std=c++11 -Wall -pedantic -ggdb
 OBJS        = player.o board.o
-BotsWoohoo  = player
+PLAYERNAME  = BootsWoohoo
 
-all: $(BotsWoohoo) testgame
+all: $(PLAYERNAME) testgame
 
-$(BotsWoohoo): $(OBJS) wrapper.o
+$(PLAYERNAME): $(OBJS) wrapper.o
 	$(CC) -o $@ $^
 
 testgame: testgame.o
@@ -24,6 +24,6 @@ cleanjava:
 	make -C java/ clean
 
 clean:
-	rm -f *.o $(BotsWoohoo) testgame testminimax
+	rm -f *.o $(PLAYERNAME) testgame testminimax
 
 .PHONY: java testminimax

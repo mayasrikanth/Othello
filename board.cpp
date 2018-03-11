@@ -1,4 +1,6 @@
 #include "board.hpp"
+//class Board;
+
 
 /*
  * Make a standard 8x8 othello board and initialize it to the standard setup.
@@ -212,6 +214,35 @@ int Board::checkScore(Move *move){
       score = 3;
     }
     return score;
+}
+
+vector<Move*> Board::getMoves(Move *m, Side side)  //returns vector of all possible moves 
+{
+    Board *temp = copy();
+    temp->doMove(m, side);
+    vector <Move*> *possible = new vector<Move*>;
+
+    Move *move = new Move(0, 0);
+     
+    for (int i = 0; i < 8; i ++)
+     {
+        //std::cerr << "i: " << i<< std::endl;
+       for (int j = 0; j < 8; j ++)
+       {
+        
+
+         move ->setX(i);
+         move ->setY(j);
+         if (temp->checkMove(move, side))
+         {
+            possible->push_back(move);
+          
+         }
+       }
+     }
+     return *possible; 
+
+
 }
 
 /*

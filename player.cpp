@@ -51,9 +51,12 @@ Player::~Player() {
 
 Move *Player::MiniMax(Move *opponentsMove, int msLeft) {
 
+    
+
 }
 
-Move *Player::MiniMaxOneLayer(Move *opponentsMove, int msLeft, int layer) {
+
+/*Move *Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side) {
   if (layer == 0)
   {
     return SimplePlayer(opponentsMove, msLeft)
@@ -61,9 +64,11 @@ Move *Player::MiniMaxOneLayer(Move *opponentsMove, int msLeft, int layer) {
   else
   {
     best = -1000;
-    for
+    
   }
-}
+  }
+  */
+
 
 Move *Player::SimplePlayer(Move *opponentsMove, int msLeft) {
   othello->doMove(opponentsMove, yours);
@@ -104,76 +109,27 @@ Move *Player::RandomHeuristic(Move *opponentsMove, int msLeft) {
       }
     }
 }
+}
 
 Move *Player::doMove(Move *opponentsMove, int msLeft) {
     /*
      * TODO: Implement how moves your AI should play here. You should first
      * process the opponent's opponents move before calculating your own move
      */
-
-<<<<<<< HEAD
+    
      // return MiniMax(opponentsMove, msLeft);
      // return SimplePlayer(opponentsMove, msLeft);
      // return RandomHeuristic(opponentsMove, msLeft);
 
-=======
-
-     othello->doMove(opponentsMove, yours);
-     Move *move = new Move(0, 0);
-     Move *maxMove = nullptr;
-     
-     for (int i = 0; i < 8; i ++)
-     {
-        //std::cerr << "i: " << i<< std::endl;
-       for (int j = 0; j < 8; j ++)
-       {
-        
-
-         move ->setX(i);
-         move ->setY(j);
-         if (othello->checkMove(move, mine))
-         {
-            std::cerr<< " i: "<< i <<" j: "<< j<<std::endl;
-           if (maxMove == nullptr)
-           {
-                maxMove = new Move(i, j);
-
-           } 
-            else if (othello->checkScore(move) > othello->checkScore(maxMove))
-           {
-             
-             maxMove->setX(i); 
-             maxMove->setY(j);
-
-           }
-         }
-       }
-     }
-     if(maxMove != nullptr)
-     {
-        othello->doMove(maxMove, mine);
-     }
-     return maxMove;
-     
-     /*
-     * Random Heuristic
-     othello->doMove(opponentsMove, yours);
-     Move *move = new Move(0, 0);
-     for (int i = 0; i < 8; i ++)
-     {
-       for (int j = 0; j < 8; j ++)
-       {
-         move ->setX(i);
-         move ->setY(j);
-         if (othello->checkMove(move, mine))
-         {
-           othello->doMove(move, mine);
-           return move;
-         }
-       }
-       */
->>>>>>> 28ac9c57ea85477a5121bf02d5bfb2bba199c37f
-    //refer to minimax tree to determine the most favorable move
 }
+
+
+
+
+
+
+    
+
+
 
 
