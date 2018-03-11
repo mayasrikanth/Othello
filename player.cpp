@@ -50,24 +50,37 @@ Player::~Player() {
  */
 
 Move *Player::MiniMax(Move *opponentsMove, int msLeft) {
+    int layer = max_depth; 
+    
 
     
 
 }
 
 
-/*Move *Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side) {
-  if (layer == 0)
+Move *Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side) {
+
+ // collect vector from getMoves in pointer and delete the pointer each time 
+
+  if(othello->hasMoves())
   {
-    return SimplePlayer(opponentsMove, msLeft)
+        if (layer == 0)
+    {
+
+        return SimplePlayer(opponentsMove, msLeft);
+    }
   }
+
   else
   {
+    
     best = -1000;
     
   }
+
+
   }
-  */
+
 
 
 Move *Player::SimplePlayer(Move *opponentsMove, int msLeft) {

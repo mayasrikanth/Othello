@@ -14,7 +14,7 @@ public:
     ~Player();
 
     Move *doMove(Move *opponentsMove, int msLeft);
-    int max_depth = 4;
+    int max_depth = 2;
     /*Move *MiniMax(Move *opponentsMove, int msLeft); */
     Move *RandomHeuristic(Move *opponentsMove, int msLeft);
     Move *SimplePlayer(Move *opponentsMove, int msLeft);
