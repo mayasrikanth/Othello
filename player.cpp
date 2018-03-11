@@ -49,7 +49,8 @@ Player::~Player() {
  * return nullptr.
  */
 
-Move *Player::MiniMax(Move *opponentsMove, int msLeft) {
+Move *Player::MiniMax(Move *opponentsMove, int msLeft) 
+{
     int layer = max_depth; 
     
 
@@ -67,7 +68,7 @@ Move *Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side) {
         if (layer == 0)
     {
 
-        return SimplePlayer(opponentsMove, msLeft);
+        return SimplePlayer(opponentsMove, msLeft);   //returns the best move 
     }
   }
 
