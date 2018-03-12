@@ -60,24 +60,25 @@ int Player::MiniMax(Move *opponentsMove, int msLeft, Move &bestmove)
 }
 
 
-int Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side, int msLeft, Move &bestmove) 
+int Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side, int msLeft, Move &bestmove)
 {
 
  // collect vector from getMoves in pointer and delete the pointer each time
 
-   
+
 
   othello->doMove(opponentsMove, yours);
   if (layer == 0)
   {
-    if(side == BLACK)
+    return othello->checkBoardScore(side);
+    /*if(side == BLACK)
     {
         return othello->countBlack();
     }
     else
     {
         return othello->countWhite();
-    }
+    }*/
 
     //return SimplePlayer(opponentsMove, msLeft);   //returns the best move
   }
@@ -116,7 +117,7 @@ int Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side, int msLef
       {
         best = current_score;
         best_i = i;
-        
+
         //best_move = current_move;
       }
       if (layer == max_depth -1)

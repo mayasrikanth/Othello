@@ -216,19 +216,19 @@ int Board::checkScore(Move *move){
     return score;
 }
 
-vector<Move*> Board::getMoves(Move *m, Side side)  //returns vector of all possible moves 
+vector<Move*> Board::getMoves(Move *m, Side side)  //returns vector of all possible moves
 {
-    
+
     vector <Move*> *possible = new vector<Move*>;
 
-    
+
      Move *temp = new Move(0,0);
     for (int i = 0; i < 8; i ++)
      {
-        
+
        for (int j = 0; j < 8; j ++)
        {
-        
+
 
          temp ->setX(i);
          temp ->setY(j);
@@ -236,13 +236,30 @@ vector<Move*> Board::getMoves(Move *m, Side side)  //returns vector of all possi
          {
             Move *move = new Move(i, j);
             possible->push_back(move);
-          
+
          }
        }
      }
-     return *possible; 
+     return *possible;
 
+}
 
+int Board::getBoardScore(Side side)
+{
+  int score = 0;
+  Move *temp = new Move(0,0);
+  for (int i = 0; i < 8; i ++)
+   {
+     for (int j = 0; j < 8; j ++)
+     {
+       if get(side, x, y) {
+         temp.setX(i);
+         temp.setY(j);
+         score += checkScore(temp);
+       }
+     }
+   }
+   return score;
 }
 
 /*
