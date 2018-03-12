@@ -22,9 +22,11 @@ int main(int argc, char *argv[]) {
     Board *board = new Board();
     board->setBoard(boardData);
 
+
     // Initialize player as the white player, and set testing_minimax flag.
     Player *player = new Player(WHITE);
     player->testingMinimax = true;
+    player->othello = board;
 
 
     /**

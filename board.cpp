@@ -218,23 +218,23 @@ int Board::checkScore(Move *move){
 
 vector<Move*> Board::getMoves(Move *m, Side side)  //returns vector of all possible moves 
 {
-    Board *temp = copy();
-    temp->doMove(m, side);
+    
     vector <Move*> *possible = new vector<Move*>;
 
-    Move *move = new Move(0, 0);
-     
+    
+     Move *temp = new Move(0,0);
     for (int i = 0; i < 8; i ++)
      {
-        //std::cerr << "i: " << i<< std::endl;
+        
        for (int j = 0; j < 8; j ++)
        {
         
 
-         move ->setX(i);
-         move ->setY(j);
-         if (temp->checkMove(move, side))
+         temp ->setX(i);
+         temp ->setY(j);
+         if (checkMove(temp, side))
          {
+            Move *move = new Move(i, j);
             possible->push_back(move);
           
          }

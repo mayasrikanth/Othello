@@ -1,4 +1,6 @@
 #include "player.hpp"
+#include <unistd.h>
+
 
 
 /*
@@ -8,7 +10,9 @@
  */
 Player::Player(Side side) {
     // Will be set to true in test_minimax.cpp.
+    //usleep(15000000);
     othello = new Board();  //creates board with 4 center pieces
+
     mine = side;
     if (mine == BLACK)
     {
@@ -18,7 +22,7 @@ Player::Player(Side side) {
     {
       yours = BLACK;
     }
-    testingMinimax = false;
+    testingMinimax = true;
 
 
     /*
@@ -49,38 +53,80 @@ Player::~Player() {
  * return nullptr.
  */
 
-Move *Player::MiniMax(Move *opponentsMove, int msLeft)
+int Player::MiniMax(Move *opponentsMove, int msLeft, Move &bestmove)
 {
     int layer = max_depth;
-    return MiniMaxOneLayer(opponentMove, layer);
+    return MiniMaxOneLayer(opponentsMove, layer, mine, msLeft, bestmove);
 }
 
 
-Move *Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side) {
+int Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side, int msLeft, Move &bestmove) 
+{
 
  // collect vector from getMoves in pointer and delete the pointer each time
 
+   
+
+  othello->doMove(opponentsMove, yours);
   if (layer == 0)
   {
-    return SimplePlayer(opponentsMove, msLeft);   //returns the best move
+    if(side == BLACK)
+    {
+        return othello->countBlack();
+    }
+    else
+    {
+        return othello->countWhite();
+    }
+
+    //return SimplePlayer(opponentsMove, msLeft);   //returns the best move
   }
 
   else
   {
     int best = -1000;
-    Move* best_move = nullptr;
-    vector <Move*> *all_moves = othello->getMoves(opponentMove, yours);
-    for (int i = 0; i < all_moves.size(); i++)
+    //Move* best_move = new Move(0,0);
+    int best_i = 0;
+
+    //assigning side:
+    Side temp_side;
+    if(side == mine)
     {
-      Move* current_move = MiniMaxOneLayer((all_moves[i], layer-1, yours);
-      int current_score = othello->checkScore(current_move);
+        temp_side = yours;
+    }
+    else
+    {
+        temp_side = mine;
+    }
+    int current_score;
+    vector <Move*> all_moves = othello->getMoves(opponentsMove, side);
+    //Move* current_move = new Move(0,0);
+    for (unsigned int i = 0; i < all_moves.size(); i++)
+    {
+        int x = all_moves[i]->getX();
+        int y = all_moves[i]->getY();
+
+     cout<<"Possible Move x: " << x << " y: " << y<<endl;
+      Board *temp = othello->copy();
+      temp->doMove(all_moves[i],side);
+      layer--;
+      current_score = MiniMaxOneLayer(all_moves[i], layer, temp_side, msLeft, bestmove);
+      //int current_score = temp->checkScore(current_move);
       if (current_score > best)
       {
         best = current_score;
-        best_move = current_move;
+        best_i = i;
+        
+        //best_move = current_move;
+      }
+      if (layer == max_depth -1)
+      {
+        bestmove = *all_moves[best_i];
       }
     }
-    return current_move;
+    //return current_move;
+
+    return current_score;
   }
 }
 
@@ -132,8 +178,10 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
      * TODO: Implement how moves your AI should play here. You should first
      * process the opponent's opponents move before calculating your own move
      */
+    Move* best = new Move(0,0);
 
-     return MiniMax(opponentsMove, msLeft);
+     MiniMax(opponentsMove, msLeft, *best);
+     return best;
      // return SimplePlayer(opponentsMove, msLeft);
      // return RandomHeuristic(opponentsMove, msLeft);
 
