@@ -55,6 +55,8 @@ Player::~Player() {
 
 int Player::MiniMax(Move *opponentsMove, int msLeft, Move &bestmove)
 {
+    
+    othello->doMove(opponentsMove, yours);
     int layer = max_depth;
     return MiniMaxOneLayer(opponentsMove, layer, mine, msLeft, bestmove);
 }
@@ -67,10 +69,19 @@ int Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side, int msLef
 
 
 
-  othello->doMove(opponentsMove, yours);
+  
   if (layer == 0)
   {
-    return othello->checkBoardScore(side);
+    Side temp_side;
+    if(side == mine)
+    {
+        temp_side = yours;
+    }
+    else
+    {
+        temp_side = mine;
+    }
+    return othello->getBoardScore(temp_side);
     /*if(side == BLACK)
     {
         return othello->countBlack();
@@ -116,7 +127,10 @@ int Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side, int msLef
       if (current_score > best)
       {
         best = current_score;
-        best_i = i;
+        if (layer == max_depth -1)
+        {
+             best_i = i;
+        }
 
         //best_move = current_move;
       }
