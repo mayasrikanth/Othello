@@ -1,8 +1,12 @@
+
 Contributions:
-Emma: 
 
-Maya: 
+Emma: makefile, SimplePlayer, doMove
 
+Maya: randomHeuristic, Player Constructor, all hpp files
+
+Both brainstormed algorithm for minimax, edited the getAllMoves function, and 
+created the heuristic. 
 
 
 Improvements:
@@ -20,14 +24,18 @@ keep track of how well our side fares under a move we could potentially make.
 We think our minimax will perform fairly well since it is able to predict our opponent's move
 and determine the best course of action to take, assuming they will maximize their score. This is
 better than blindly applying the heuristic, as it only takes a single move change the winning side
-at any point in the game. 
+at any point in the game. Thus, instead of evaluating a single move, it's better to evaluate the 
+heuristic after an acculumation of possible moves.  
 
 
 Ideas that were tried but didn't work:
+
 Before using the heuristic that gives each coin a strategic value based on its position on 
 the othello board, we tried a more primitive scoring approach of simply counting the amount of
 coins we'd placed on the board vs the number of coins our opponent had. This was not very effective,
-as the amount of coins each side has on the board is not indicative of who has the strategic advantage..
+as the amount of coins each side has on the board is not indicative of who has the strategic advantage.
+The strategic value of a given move can be determined by applying the heuristic to all coins
+on the board for a given side at that point in the game, which is what we eventually designed our getBoardScore to do.  
 
 
 
