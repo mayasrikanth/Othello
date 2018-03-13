@@ -71,8 +71,8 @@ int Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side, int msLef
 
 
   if (layer == 0)
-  /*{
-    Side temp_side;
+  {
+  /*  Side temp_side;
     if(side == mine)
     {
         temp_side = yours;
@@ -160,8 +160,9 @@ int Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side, int msLef
     //return current_move;
 
     return current_score;
-  }
 }
+  }
+
 
 
 
