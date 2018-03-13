@@ -68,8 +68,6 @@ int Player::MiniMaxOneLayer(Move *opponentsMove, int layer, Side side, int msLef
  // collect vector from getMoves in pointer and delete the pointer each time
 
 
-
-
   if (layer == 0)
   {
   /*  Side temp_side;

@@ -252,11 +252,13 @@ int Board::getBoardScore(Side side)
    {
      for (int j = 0; j < 8; j ++)
      {
+
         if (get(side, i, j)) {
          temp->setX(i);
          temp->setY(j);
          score += checkScore(temp);
-     }    else if(!get(side, i, j) && occupied(i,j))
+     }    
+     else if(!get(side, i, j) && occupied(i,j))
      
      {
 
@@ -265,28 +267,12 @@ int Board::getBoardScore(Side side)
          score -= checkScore(temp);
 
      }
-       /* if(side == BLACK)
-    {
-       if (get(side, i, j)) {
-         temp->setX(i);
-         temp->setY(j);
-         score += checkScore(temp);
-     }
-     else if(!get(side, i, j) && occupied(i,j))
-     {
-        if (get(side, i, j)) {
-         temp->setX(i);
-         temp->setY(j);
-         score += checkScore(temp);
-
-     }
-
-       }*/
-     //}
+       
    }
    return score;
 }
 }
+
 
 /*
  * Sets the board state given an 8x8 char array where 'w' indicates a white
